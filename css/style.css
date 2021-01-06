@@ -11,3 +11,9 @@ body{
     display: flex;
     justify-content: flex-end;
 }
+.home{
+    color: white;
+}
+.home:hover{
+    color: lightcyan;
+}
