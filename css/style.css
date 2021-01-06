@@ -1,8 +1,13 @@
 /* Christy Eang */
-.body{
-    background-color: antiquewhite;
+body{
+    background-image: linear-gradient(to right, #05000c ,#040438, #090968, #003B6F, #090968, #040438, #05000c);
+    color: white;
 }
 .center{
     display: flex;
     justify-content: center;
+}
+.end{
+    display: flex;
+    justify-content: flex-end;
 }
