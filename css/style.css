@@ -17,3 +17,9 @@ body{
 .home:hover{
     color: lightcyan;
 }
+.bottom{
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+    bottom: 10;
+}
