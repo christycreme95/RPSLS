@@ -1,7 +1,9 @@
 /* Christy Eang */
 body{
-    background-image: linear-gradient(to right, #05000c ,#040438, #090968, #003B6F, #090968, #040438, #05000c);
+    background-image: linear-gradient(to right,#05000c ,#040438, #090968, #003B6F, #090968, #040438, #05000c);
     color: white;
+    font-family: 'Nanum Myeongjo', serif;
+
 }
 .center{
     display: flex;
@@ -18,8 +20,42 @@ body{
     color: lightcyan;
 }
 .bottom{
-    display: flex;
-    justify-content: flex-end;
-    height: auto;
-    bottom: 10;
+    margin-top: 300px;
+}
+.btnFront{
+    border-radius: 0%;
+    background-color: rgb(9, 0, 49);
+    box-shadow: 0 4px 8px 0 rgba(121, 121, 121, 0.2), 0 6px 20px 0 rgba(151, 151, 151, 0.205);
+    
+}
+.line{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 260px; /* Set the width of the sidebar */
+  position: absolute;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: rgba(26, 27, 37, 0.548); /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 0px;
+
+}
+.bigify{
+    font-size: 60px;
+}
+.bigger{
+    font-size: 80px;
+    font-family: 'Do Hyeon', sans-serif;
+
+}
+.downMore{
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+.navBg{
+    background-color: #4B3F72;
+}
+.fas{
+    color: #119da4;
+    border-radius: 50%;
 }
