@@ -17,10 +17,10 @@ body{
     color: white;
 }
 .home:hover{
-    color: lightcyan;
+    color: rgb(199, 199, 199);
 }
 .bottom{
-    margin-top: 300px;
+    margin-top: 200px;
 }
 .btnFront{
     border-radius: 0%;
@@ -58,4 +58,10 @@ body{
 .fas{
     color: #119da4;
     border-radius: 50%;
+}
+.numbers{
+    font-size: 60px;
+    width: 100px;
+    height: 100px;
+    font-family: 'Do Hyeon', sans-serif;
 }
