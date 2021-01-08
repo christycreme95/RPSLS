@@ -14,13 +14,21 @@ body{
     justify-content: flex-end;
 }
 .home{
-    color: white;
+    color: rgb(255, 255, 255);
 }
 .home:hover{
-    color: rgb(199, 199, 199);
+    color: rgb(192, 192, 192);
 }
 .bottom{
-    margin-top: 200px;
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    text-align: center;
+
 }
 .btnFront{
     border-radius: 0%;
@@ -58,6 +66,7 @@ body{
 .fas{
     color: #119da4;
     border-radius: 50%;
+    
 }
 .numbers{
     font-size: 60px;

@@ -2,10 +2,10 @@ let userAns = "";
 let secondAns = "";
 let game = 0;
 let amountWanted = 0;
-let countWin = 0;
-let countLose = 0;
-let CountTie = 0;
-let overallCount = 0;
+let round=0;
+let countTie=0;
+let countWin=0;
+let countLose=0;
 
 let vComputer = document.getElementById("vComputer");
 let twoPlayer = document.getElementById("twoPlayer");
@@ -26,15 +26,14 @@ vComputer.addEventListener('click', function () {
     overallCount=0;
     game = 1;
     deleteEverything();
-    getCPU();
-    appendchoices();
+    appendNum();
 })
 
 twoPlayer.addEventListener('click', function(){
     overallCount =0;
     game = 2;
     deleteEverything();
-    appendchoices()
+    appendNum();
 })
 
 vsJT.addEventListener('click', function(){
@@ -54,79 +53,80 @@ function deleteEverything() {
     injectHere.innerHTML = "";
 }
 
-function compare() {
-    overallCount++;
+function compare(info) {
     console.log(userAns)
     console.log(secondAns)
     if (secondAns == userAns) {
-        return `You both chose ${userAns}, so you tied!`;
-        CountTie++;
+        info.innerText = `You both chose ${userAns}, so you tied! This game was to limit ties but look at you!`;
+        
     } else if (userAns == "Rock") {
         if (secondAns == "Paper"){
-            return "Paper covers Rock, Paper Wins";
-
+            info.innerText = "Paper covers Rock, Paper Wins";
+            
         }else if(secondAns == "Spock") {
-            return "Spock vaporizes Rock, Spock Wins";
-
+            info.innerText = "Spock vaporizes Rock, Spock Wins";
+            
         } else if (secondAns == "Scissors"){
-            return "Rock crushes Scissors, Rock Win";
-
+            info.innerText = "Rock crushes Scissors, Rock Win";
+            
         }else if(secondAns == "Lizard") {
-            return "Rock crushes Lizard, Rock Wins";
+            info.innerText = "Rock crushes Lizard, Rock Wins";
+            
         }
     } else if (userAns == "Paper") {
         if (secondAns == "Scissors"){
-            return "Scissors cuts Paper, Scissors Wins";
-
+            info.innerText = "Scissors cuts Paper, Scissors Wins";
+            
         }else if (secondAns == "Lizard") {
-            return "Lizard eats paper, Lizard Wins";
-
+            info.innerText = "Lizard eats paper, Lizard Wins";
+            
         } else if (secondAns == "Rock"){
-            return "Paper covers Rock, Paper Wins";
-
+            info.innerText = "Paper covers Rock, Paper Wins";
+            
         }else if (secondAns == "Spock") {
-            return "Paper disproves Spock, Paper Wins";
-
+            info.innerText = "Paper disproves Spock, Paper Wins";
+            
         }
     } else if (userAns == "Scissors") {
         if (secondAns == "Spock"){
-            return "Spock smashes scissors, Spock Wins";
+            info.innerText = "Spock smashes scissors, Spock Wins";
+            
         }else if(secondAns == "Rock") {
-            return "Rock crushes Scissors, Rock Wins";
-
+            info.innerText = "Rock crushes Scissors, Rock Wins";
+            
         } else if (secondAns == "Lizard"){
-            return "Scissors decapitates Lizard";
-
+            info.innerText = "Scissors decapitates Lizard";
+            
         }else if(secondAns == "Paper") {
-            return " Scissors cuts paper, Scissors Wins";
-
+            info.innerText = " Scissors cuts paper, Scissors Wins";
+            
         }
     }
     else if (userAns == "Lizard") {
         if (secondAns == "Rock"){
-            return "Rock crushes Lizard, Rocks Wins";
+            info.innerText = "Rock crushes Lizard, Rocks Wins";
 
         }else if(secondAns == "Scissors") {
-            return "Scissors decapitates Lizard, Scissors Wins";
+            info.innerText = "Scissors decapitates Lizard, Scissors Wins";
 
         } else if (secondAns == "Paper"){
-            return "Lizard eats Paper, Lizard Wins";
+            info.innerText = "Lizard eats Paper, Lizard Wins";
 
         }else if(secondAns == "Spock") {
-            return "Lizard poisons Spock, Lizard Wins";
+            info.innerText = "Lizard poisons Spock, Lizard Wins";
 
         }
     } else if (userAns == "Spock"){
         if (secondAns == "Paper"){
-            return "Paper disproves Spock, Paper Wins";
+            info.innerText = "Paper disproves Spock, Paper Wins";
         }else if(secondAns == "Lizard") {
 
-            return "Lizard poisons Spock, Lizard Wins";
+            info.innerText = "Lizard poisons Spock, Lizard Wins";
 
         } else if (secondAns == "Rock"){
-            return "Spock vaporizes Rock, Spock Wins";
+            info.innerText = "Spock vaporizes Rock, Spock Wins";
         }else if(secondAns == "Scissors") {
-            return "Spock smashes scissors, Spock Wins";
+            info.innerText = "Spock smashes scissors, Spock Wins";
         }
     } else {
         console.log("We have an issue");
@@ -150,14 +150,15 @@ function appendNum(){
     divcol.classList = 'col-12 text-center mt-5 mb-5';
     divh2.classList = "bigify";
     divcol.append(divh2);
+    divRow.append(divcol);
 
     divcol1.classList = "col mb-2 center";
     btn1.classList = "btn btn-outline-light numbers";
     btn1.type = "button";
     btn1.innerText = "1"
     btn1.addEventListener('click', ()=>{
+        amountWanted = 1;
         deleteEverything();
-        round++;
         if(game==1){
             getCPU();
             appendchoices();
@@ -165,8 +166,43 @@ function appendNum(){
             appendchoices();
         }
     })
+    divcol1.append(btn1);
+    divRow.append(divcol1);
 
+    divcol2.classList = "col mb-2 center";
+    btn2.classList = "btn btn-outline-light numbers";
+    btn2.type = "button";
+    btn2.innerText = "5"
+    btn2.addEventListener('click', ()=>{
+        amountWanted = 5;
+        deleteEverything();
 
+        if(game==1){
+            getCPU();
+            appendchoices();
+        }else if(game==2){
+            appendchoices();
+        }
+    })
+    divcol2.append(btn2);
+    divRow.append(divcol2);
+
+    divcol3.classList = "col mb-2 center";
+    btn3.classList = "btn btn-outline-light numbers";
+    btn3.type = "button";
+    btn3.innerText = "7"
+    btn3.addEventListener('click', ()=>{
+        amountWanted = 7;
+        deleteEverything();
+        if(game==1){
+            getCPU();
+            appendchoices();
+        }else if(game==2){
+            appendchoices();
+        }
+    })
+    divcol3.append(btn3);
+    divRow.append(divcol3);
 
     injectHere.append(divRow);
 }
@@ -382,10 +418,10 @@ function appendSecondChoice() {
     btn3.classList = "btn btn-outline-light";
     btn3.type = "button";
     btn3.addEventListener('click', function () {
-        console.log("I clicked scissors");
+        deleteEverything();
         if(game==2){
         secondAns="Scissors";
-            
+        appendFight();
         }
     })
     i3.classList = "fas fa-hand-scissors fa-7x";
@@ -398,10 +434,11 @@ function appendSecondChoice() {
     btn4.classList = "btn btn-outline-light";
     btn4.type = "button";
     btn4.addEventListener('click', function () {
-        console.log("I clicked lizard");
+        deleteEverything();
+
         if(game==2){
         secondAns = "Lizard";
-            
+        appendFight();
         }
     })
     i4.classList = "fas fa-hand-lizard fa-7x";
@@ -414,10 +451,11 @@ function appendSecondChoice() {
     btn5.classList = "btn btn-outline-light";
     btn5.type = "button";
     btn5.addEventListener('click', function () {
-        console.log("I clicked spock");
+        deleteEverything();
+
         if(game==2){
         secondAns="Spock";
-            
+        appendFight();
         }
     })
     i5.classList = "fas fa-hand-spock fa-7x";
@@ -430,6 +468,8 @@ function appendSecondChoice() {
 
 
 function appendFight() {
+    round++;
+
     let divRow = document.createElement("div");
     let div1 = document.createElement("div");
     let h2 = document.createElement("h2");
@@ -446,9 +486,9 @@ function appendFight() {
 
 
     divRow.classList = "row down";
-    div1.classList = "col-12 text-center mt-5 mb-5";
+    div1.classList = "col-12 text-center downMore";
     h2.classList = "bigify";
-    h2.innerText = compare();
+    compare(h2);
     
     div1.append(h2);
     divRow.append(div1);
@@ -506,14 +546,21 @@ function appendFight() {
     divRow1.className = "row";
     div4.classList = "col-12 d-flex justify-content-end bottom";
     btnNxt.classList = "btn btn-secondary btn-lg";
-    btnNxt.innerText = "change Me to Next Round Or Something";
-    // Next Round or Go Home, or second player input,
-    // depends on vs computer vs second player
-    btnNxt.addEventListener("click", function () {
-        deleteEverything();
-        appendchoices();
-    });
-    
+    if(amountWanted == round){
+        btnNxt.innerText = "Go Back";
+        btnNxt.addEventListener("click", function () {
+            location.reload()
+        });
+    }else{
+        // Next Round or Go Home, or second player input,
+        // depends on vs computer vs second player
+        btnNxt.innerText = "Next Round"
+        btnNxt.addEventListener("click", function () {
+            deleteEverything();
+            appendchoices();
+        });
+    }
+        
     div4.append(btnNxt);
     divRow1.append(div4)
 
