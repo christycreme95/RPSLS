@@ -153,7 +153,7 @@ function appendNum(){
     divRow.classList = "row down";
     divcol.classList = 'col-12 text-center mt-5 mb-5';
     divh2.classList = "bigify";
-    divh2.innerText = "Best Of?"
+    divh2.innerText = "How Many Rounds?"
     divcol.append(divh2);
     divRow.append(divcol);
 
@@ -181,7 +181,6 @@ function appendNum(){
     btn2.addEventListener('click', ()=>{
         amountWanted = 5;
         deleteEverything();
-
         if(game==1){
             getCPU();
             appendchoices();
@@ -208,7 +207,6 @@ function appendNum(){
     })
     divcol3.append(btn3);
     divRow.append(divcol3);
-
     injectHere.append(divRow);
 }
 
@@ -487,11 +485,18 @@ function appendFight() {
     let div4 = document.createElement("div");
     let btnNxt = document.createElement("button");
 
+    let div5 = document.createElement("div");
+    let h3 = document.createElement("h3");
+
 
     divRow.classList = "row down";
     div1.classList = "col-12 text-center downMore";
     h2.classList = "bigify";
-    h2.innerHTML = compare() +"<br />" + "Win:" + countWin + " Lose:" + countLose+ " Tie:" + countTie;
+    h2.innerHTML = compare();
+    //  +"<br />" + "Win:" + countWin + " Lose:" + countLose+ " Tie:" + countTie;
+    countWin;
+    countLose;
+    countTie;
     div1.append(h2);
     divRow.append(div1);
 
@@ -548,20 +553,157 @@ function appendFight() {
     divRow1.className = "row";
     div4.classList = "col-12 d-flex justify-content-end bottom";
     btnNxt.classList = "btn btn-secondary btn-lg";
-    if(amountWanted == round){
-        btnNxt.innerText = "Go Back";
-        btnNxt.addEventListener("click", function () {
-            location.reload()
-        });
+
+    div5.classList = "col-12 text-center";
+    h3.classList= "box";
+
+    if(amountWanted==5){
+        if(countLose == 3 || countWin == 3){
+            btnNxt.innerText = "Go Back Home";
+            btnNxt.addEventListener("click", function () {
+                location.reload()
+            });
+            if(game==1){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose>countWin){
+                    h3.innerHTML = `Computer Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }else if(game==2){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose > countWin){
+                    h3.innerHTML = `Player Two Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }else{
+
+                    h3.innerHTML = `You Both Lose! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }
+        }else if(amountWanted == round){
+            btnNxt.innerText = "Go Back Home";
+            btnNxt.addEventListener("click", function () {
+                location.reload()
+            });
+            
+            if(game==1){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose>countWin){
+                    h3.innerHTML = `Computer Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }else if(game==2){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose > countWin){
+                    h3.innerHTML = `Player Two Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }else{
+
+                    h3.innerHTML = `You Both Lose! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }
+        }else{
+            if(game==1){
+                h3.innerHTML = `Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+            }else if(game==2){
+                h3.innerHTML = `Player One: ${countWin} Wins <br> Player 2: ${countLose} Wins <br> Tie: ${countTie}`;
+            }
+            btnNxt.innerText = "Next Round"
+            btnNxt.addEventListener("click", function () {
+                deleteEverything();
+                appendchoices();
+            });
+        }
+    }else if(amountWanted==7){
+        if(countLose == 4 || countWin == 4){
+            btnNxt.innerText = "Go Back Home";
+            btnNxt.addEventListener("click", function () {
+                location.reload()
+            });
+            if(game==1){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose>countWin){
+                    h3.innerHTML = `Computer Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }else if(game==2){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose > countWin){
+                    h3.innerHTML = `Player Two Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }else{
+
+                    h3.innerHTML = `You Both Lose! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }
+        }else if(amountWanted == round){
+            btnNxt.innerText = "Go Back Home";
+            btnNxt.addEventListener("click", function () {
+                location.reload()
+            });
+            if(game==1){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose>countWin){
+                    h3.innerHTML = `Computer Wins! <hr> Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }else if(game==2){
+                if(countWin > countLose){
+                    h3.innerHTML = `Player One Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                
+                }else if(countLose > countWin){
+                    h3.innerHTML = `Player Two Wins! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }else{
+
+                    h3.innerHTML = `You Both Lose! <hr> Player One: ${countWin} Wins <br> Player Two: ${countLose} Wins <br> Tie: ${countTie}`;
+                }
+            }
+        }else{
+            if(game==1){
+                h3.innerHTML = `Player One: ${countWin} Wins <br> Computer: ${countLose} Wins <br> Tie: ${countTie}`;
+            }else if(game==2){
+                h3.innerHTML = `Player One: ${countWin} Wins <br> Player 2: ${countLose} Wins <br> Tie: ${countTie}`;
+            }
+            btnNxt.innerText = "Next Round"
+            btnNxt.addEventListener("click", function () {
+                deleteEverything();
+                appendchoices();
+            });
+        }
     }else{
-        // Next Round or Go Home, or second player input,
-        // depends on vs computer vs second player
-        btnNxt.innerText = "Next Round"
-        btnNxt.addEventListener("click", function () {
-            deleteEverything();
-            appendchoices();
-        });
+        if(amountWanted == round){
+            btnNxt.innerText = "Go Back Home";
+            btnNxt.addEventListener("click", function () {
+                location.reload()
+            });
+            if(game==2){
+                if(countWin==1){
+                    h3.innerHTML = "Player One Wins!";
+                }else if(countLose==1){
+                    h3.innerHTML = "Player Two Wins!";
+                }else if(countTie==1){
+                    h3.innerHTML = "You Both Lose!"
+                }
+            }
+        }else{
+
+            // Next Round or Go Home, or second player input,
+            // depends on vs computer vs second player
+            btnNxt.innerText = "Next Round"
+            btnNxt.addEventListener("click", function () {
+                deleteEverything();
+                appendchoices();
+            });
+        }
     }
+    div5.append(h3);
+    divRow.append(div5);
         
     div4.append(btnNxt);
     divRow1.append(div4)
