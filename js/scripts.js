@@ -3,9 +3,9 @@ let secondAns = "";
 let game = 0;
 let amountWanted = 0;
 let round=0;
-let countTie=0;
-let countWin=0;
-let countLose=0;
+let countTie = 0;
+let countWin = 0;
+let countLose = 0;
 
 let vComputer = document.getElementById("vComputer");
 let twoPlayer = document.getElementById("twoPlayer");
@@ -53,85 +53,91 @@ function deleteEverything() {
     injectHere.innerHTML = "";
 }
 
-function compare(info) {
-    console.log(userAns)
-    console.log(secondAns)
+function compare() {
+    console.log(countTie);
+    console.log(countLose);
+    console.log(countWin);
     if (secondAns == userAns) {
-        info.innerText = `You both chose ${userAns}, so you tied! This game was to limit ties but look at you!`;
-        
+        countTie++;
+        return `You both chose ${userAns}, so you tied! This game was to limit ties but look at you!`;
     } else if (userAns == "Rock") {
         if (secondAns == "Paper"){
-            info.innerText = "Paper covers Rock, Paper Wins";
-            
+            countLose++;
+            return "Paper covers Rock, Player 2 Wins";
         }else if(secondAns == "Spock") {
-            info.innerText = "Spock vaporizes Rock, Spock Wins";
-            
+            countLose++;
+            return "Spock vaporizes Rock, Player 2 Wins";
         } else if (secondAns == "Scissors"){
-            info.innerText = "Rock crushes Scissors, Rock Win";
-            
+            countWin++;
+            return "Rock crushes Scissors, Player 1 Win";
         }else if(secondAns == "Lizard") {
-            info.innerText = "Rock crushes Lizard, Rock Wins";
-            
+            countWin++;
+            return "Rock crushes Lizard, Player 1 Wins";
         }
     } else if (userAns == "Paper") {
         if (secondAns == "Scissors"){
-            info.innerText = "Scissors cuts Paper, Scissors Wins";
-            
+            countLose++;
+            return "Scissors cuts Paper, Scissors Wins";
         }else if (secondAns == "Lizard") {
-            info.innerText = "Lizard eats paper, Lizard Wins";
-            
+            countLose++;
+            return "Lizard eats paper, Lizard Wins";
         } else if (secondAns == "Rock"){
-            info.innerText = "Paper covers Rock, Paper Wins";
+            countWin++;
+            return "Paper covers Rock, Paper Wins";
             
         }else if (secondAns == "Spock") {
-            info.innerText = "Paper disproves Spock, Paper Wins";
-            
+            countWin++;
+            return "Paper disproves Spock, Paper Wins";
         }
     } else if (userAns == "Scissors") {
         if (secondAns == "Spock"){
-            info.innerText = "Spock smashes scissors, Spock Wins";
-            
+            countLose++;
+            return "Spock smashes scissors, Spock Wins";
         }else if(secondAns == "Rock") {
-            info.innerText = "Rock crushes Scissors, Rock Wins";
-            
+            countLose++;
+            return "Rock crushes Scissors, Rock Wins";
         } else if (secondAns == "Lizard"){
-            info.innerText = "Scissors decapitates Lizard";
-            
+            countWin++;
+            return "Scissors decapitates Lizard, Scissors Wins";
         }else if(secondAns == "Paper") {
-            info.innerText = " Scissors cuts paper, Scissors Wins";
-            
+            countWin++;
+            return " Scissors cuts paper, Scissors Wins";
         }
     }
     else if (userAns == "Lizard") {
         if (secondAns == "Rock"){
-            info.innerText = "Rock crushes Lizard, Rocks Wins";
-
+            countLose++;
+            return "Rock crushes Lizard, Rocks Wins";
         }else if(secondAns == "Scissors") {
-            info.innerText = "Scissors decapitates Lizard, Scissors Wins";
-
+            countLose++;
+            return "Scissors decapitates Lizard, Scissors Wins";
         } else if (secondAns == "Paper"){
-            info.innerText = "Lizard eats Paper, Lizard Wins";
-
+            countWin++;
+            return "Lizard eats Paper, Lizard Wins";
         }else if(secondAns == "Spock") {
-            info.innerText = "Lizard poisons Spock, Lizard Wins";
-
+            countWin++;
+            return "Lizard poisons Spock, Lizard Wins";
         }
     } else if (userAns == "Spock"){
         if (secondAns == "Paper"){
-            info.innerText = "Paper disproves Spock, Paper Wins";
+            countLose++;
+            return "Paper disproves Spock, Paper Wins";
         }else if(secondAns == "Lizard") {
-
-            info.innerText = "Lizard poisons Spock, Lizard Wins";
+            countLose++;
+            return "Lizard poisons Spock, Lizard Wins";
 
         } else if (secondAns == "Rock"){
-            info.innerText = "Spock vaporizes Rock, Spock Wins";
+            countWin++;
+            return "Spock vaporizes Rock, Spock Wins";
         }else if(secondAns == "Scissors") {
-            info.innerText = "Spock smashes scissors, Spock Wins";
+            countWin++;
+            return "Spock smashes scissors, Spock Wins";
         }
     } else {
         console.log("We have an issue");
     }
 }
+
 function appendNum(){
     let divRow = document.createElement("div");
     let divcol = document.createElement("div");
@@ -149,6 +155,7 @@ function appendNum(){
     divRow.classList = "row down";
     divcol.classList = 'col-12 text-center mt-5 mb-5';
     divh2.classList = "bigify";
+    divh2.innerText = "Best Of?"
     divcol.append(divh2);
     divRow.append(divcol);
 
@@ -466,10 +473,8 @@ function appendSecondChoice() {
     injectHere.append(divRow);
 }
 
-
 function appendFight() {
     round++;
-
     let divRow = document.createElement("div");
     let div1 = document.createElement("div");
     let h2 = document.createElement("h2");
@@ -488,8 +493,7 @@ function appendFight() {
     divRow.classList = "row down";
     div1.classList = "col-12 text-center downMore";
     h2.classList = "bigify";
-    compare(h2);
-    
+    h2.innerHTML = compare() +"<br />" + "Win:" + countWin + " Lose:" + countLose+ " Tie:" + countTie;
     div1.append(h2);
     divRow.append(div1);
 

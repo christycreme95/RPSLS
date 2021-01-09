@@ -36,18 +36,7 @@ body{
     box-shadow: 0 4px 8px 0 rgba(121, 121, 121, 0.2), 0 6px 20px 0 rgba(151, 151, 151, 0.205);
     
 }
-.line{
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 260px; /* Set the width of the sidebar */
-  position: absolute;
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: rgba(26, 27, 37, 0.548); /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 0px;
 
-}
 .bigify{
     font-size: 60px;
 }
@@ -58,7 +47,7 @@ body{
 }
 .downMore{
     margin-top: 50px;
-    margin-bottom: 150px;
+    margin-bottom: 100px;
 }
 .navBg{
     background-color: #4B3F72;
