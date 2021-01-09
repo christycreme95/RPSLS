@@ -41,8 +41,6 @@ vsJT.addEventListener('click', function(){
     appendJT();
 })
 
-
-
 async function getCPU() {
     let promise = await fetch("https://csa2020studentapi.azurewebsites.net/rpsls");
     secondAns = await promise.text();
